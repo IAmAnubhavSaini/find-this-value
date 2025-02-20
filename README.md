@@ -10,7 +10,7 @@ ftv({ a: "b" }, "b", (a, b) => a === b); // true
 ftv({ a: "b" }, "a", (a, b) => a === b); // false
 ```
 
-## License
+## License: MIT
 
-MIT &copy; 2018 Git Faf
-Copyright (c) 2025 Anubhav Saini
+- Copyright (c) 2018 Git Faf  
+- Copyright (c) 2025 Anubhav Saini
