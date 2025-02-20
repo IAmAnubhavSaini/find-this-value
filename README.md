@@ -15,3 +15,4 @@ Find a value in a given object with programmable matching logic - node module
 ## License
 
 MIT &copy; 2018 Git Faf
+Copyright (c) 2025 Anubhav Saini
