@@ -1,6 +1,6 @@
 {
   "name": "find-this-value",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "Find a value in a given object with programmable matching logic - node module",
   "main": "index.mjs",
   "type": "module",

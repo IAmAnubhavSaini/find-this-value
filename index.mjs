@@ -1,18 +1,9 @@
-const DEFAULT_STRING = "";
 const DEFAULT_OBJECT = {};
 const TYPEOF_OBJECT = typeof DEFAULT_OBJECT;
 
 const DEFAULT_COMPARE = (a, b) => typeof a === typeof b && a === b;
-
-const getDefaultLocation = (location) => (location ? location : []);
-const getDefaultObject = (input) => input || DEFAULT_OBJECT;
-const getDefaultCompare = (compare) => compare || DEFAULT_COMPARE;
-
 const isObject = (input) => typeof input === TYPEOF_OBJECT;
 
-const removeLastCharacter = (input) => {
-    return input.substr(0, input.length - 1);
-};
 
 /**
  *
@@ -54,15 +45,16 @@ const find = (inputObject, toFind, compareFn = DEFAULT_COMPARE, location = []) =
         location.push(k);
 
         if (isObject(o)) {
-            const { found: _found, location: _location } = find(o, toFind, compareFn, [...location]);
-            if (_found) {
-                return {
-                    found: _found,
-                    location: _location,
-                };
-            } else {
-                location.pop();
-                continue;
+            const { found: f, location: l } = find(o, toFind, compareFn, [...location]);
+            switch(f) {
+                case true:
+                    return {
+                        found: f,
+                        location: l,
+                    };
+                case false:
+                    location.pop();
+                    continue;
             }
         }
         found = compareFn(o, toFind);

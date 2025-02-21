@@ -120,4 +120,61 @@ describe("find this value", () => {
         const compare = (objVal, what) => what.test(objVal);
         expect(ftv(inputObject, toFind, compare)).toEqual(expected);
     });
+
+    it("finds that value successfully in multiple level object including object", () => {
+        const inputObject = {
+            a: "aaa",
+            b: "bba",
+            c: "cca",
+            d: {
+                0: {
+                    key: "key-1",
+                    val: "val-1",
+                },
+                1: {
+                    key: "key-2",
+                    val: "val-2",
+                },
+                2: {
+                    key: "key-3",
+                    val: "val-3",
+                },
+            },
+        };
+        const expected = {
+            found: true,
+            location: "d.2.val",
+        };
+        const toFind = "val-3";
+        expect(ftv(inputObject, toFind, equater)).toEqual(expected);
+    });
+
+    it("doesn't find the non-existing value successfully in multiple level object", () => {
+        const inputObject = {
+            a: "aaa",
+            b: "bba",
+            c: "cca",
+            d: {
+                0: {
+                    key: "key-1",
+                    val: "val-1",
+                },
+                1: {
+                    key: "key-2",
+                    val: "val-2",
+                },
+                2: {
+                    key: "key-3",
+                    val: "val-3",
+                },
+            },
+        };
+        const expected = {
+            found: false,
+            location: undefined,
+        };
+        const toFind = "val-33";
+        expect(ftv(inputObject, toFind, equater)).toEqual(expected);
+    });
+
 });
